@@ -4,7 +4,7 @@
 
 ## Contains
   1. Tailwind CSS
-  2.React-Router
+  2. React-Router
   3. React-Hooks-Form
 ## Available Scripts
 
