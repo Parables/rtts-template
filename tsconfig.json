@@ -21,6 +21,10 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error"
-  }
+    "importsNotUsedAsValues": "error",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
+}
 }

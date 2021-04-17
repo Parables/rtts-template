@@ -2,6 +2,10 @@
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
+## Contains
+  1. Tailwind CSS
+  2.React-Router
+  3. React-Hooks-Form
 ## Available Scripts
 
 ### npm start

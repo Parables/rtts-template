@@ -1,4 +1,22 @@
 {
+  "name": "ma-portal",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "directory": "git@github.com:Taxi-Check/Municipal-Assembly-Portal.git"
+  },
+  "keywords": [
+    "taxi-check",
+    "portal",
+    "txc-map"
+  ],
+  "author": {
+    "name": "Parables Boltnoel",
+    "email": "parables95@gmail.com",
+    "url": "https://github.com/parables"
+  },
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
@@ -8,10 +26,13 @@
   },
   "dependencies": {
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
-  },
+    "react-dom": "^17.0.0",
+    "react-hook-form": "^7.1.1",
+    "react-router-dom": "^5.2.0"
+    },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-postcss": "^1.2.2",
     "@snowpack/plugin-react-refresh": "^2.4.0",
     "@snowpack/plugin-typescript": "^1.2.0",
     "@snowpack/web-test-runner-plugin": "^0.2.0",
@@ -20,11 +41,16 @@
     "@types/mocha": "^8.2.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
     "@types/snowpack-env": "^2.3.2",
     "@web/test-runner": "^0.12.0",
     "chai": "^4.2.0",
+    "postcss": "^8.2.10",
+    "postcss-cli": "^8.3.1",
     "prettier": "^2.0.5",
     "snowpack": "^3.0.1",
+    "autoprefixer": "^10.2.5",
+    "tailwindcss": "^2.1.1",
     "typescript": "^4.0.0"
   }
 }
