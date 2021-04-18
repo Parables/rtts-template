@@ -5,9 +5,9 @@ module.exports = {
     src: { url: '/dist' },
   },
   plugins: [
-    '@snowpack/plugin-react-refresh',
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-postcss',
+    'snowpack-plugin-svgr',
     [
       '@snowpack/plugin-typescript',
       {

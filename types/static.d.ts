@@ -32,9 +32,10 @@ declare module '*.styl';
 
 /* IMAGES */
 declare module '*.svg' {
-  const ref: string;
+  const ref: React.SFC<React.SVGProps<SVGSVGElement>>;
   export default ref;
 }
+
 declare module '*.bmp' {
   const ref: string;
   export default ref;

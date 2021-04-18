@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import './tailwind.css';
+import LogoIcon from './logo.svg'
 interface AppProps {}
 
 function App({}: AppProps) {
@@ -16,11 +16,11 @@ function App({}: AppProps) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <LogoIcon  className="App-logo"/>
+        <p className="text-yellow-500">
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <p>
+        <p className="text-blue-500">
           Page has been open for <code>{count}</code> seconds.
         </p>
         <p>
