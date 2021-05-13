@@ -4,16 +4,18 @@ import { AppRoutes, IAppRouteProps } from '../../router';
 
 export function SideNav() {
 	const sideNavRoutes: Record<string, IAppRouteProps[]> = {};
+	let activeMenu = ""
 
-	AppRoutes.slice().map((route) => {
-		if (route.navRoute && !route.hidden && route.sectionTitle)
-			if (
-				route.sectionTitle &&
-				Array.isArray(sideNavRoutes[route.sectionTitle])
-			)
-				sideNavRoutes[route.sectionTitle] = [...sideNavRoutes[route.sectionTitle], route];
-			else sideNavRoutes[route.sectionTitle] = [route];
+	AppRoutes.slice().filter((route) => (route.navRoute && !route.hidden && route.sectionTitle)).map((route) => {
+		if (route.sectionTitle) Array.isArray(sideNavRoutes[route.sectionTitle]) ?
+			sideNavRoutes[route.sectionTitle] = [...sideNavRoutes[route.sectionTitle], route] :
+			sideNavRoutes[route?.sectionTitle] = [route];
+		if (route.navRoute && route.initialActiveMenu && route.label && !route.hidden) activeMenu = route.label
 	}); //.sort((a,b)=>{return a.navORder> b.navOrder})
+
+	useEffect(() => {
+		document.getElementById(`side-nav-menu-${activeMenu}`)?.click()
+	}, [])
 
 	return (
 		<>
@@ -32,7 +34,8 @@ export function SideNav() {
 								{sectionTitle}
 							</p>
 							{sideNavRoutes[sectionTitle].map((routes, j) => {
-								return <NavMenu key={"side-nav-menu-" + j} {...routes} />;
+								if (routes.navRoute && routes.label && !routes.hidden)
+									return <NavMenu key={"side-nav-menu-" + j} {...routes} />;
 							})}
 						</div>
 					);
@@ -49,14 +52,19 @@ function NavMenu({
 	navIcon: NavIcon,
 	navIconClass,
 	label,
+	title,
+	description
 }: IAppRouteProps) {
 	return (
-		<NavLink
-			to={path}
-			activeClassName={`bg-white text-flame-pea active-route ${activeClassName ?? ''}`}
-			className={`relative flex items-center w-full px-10 py-2 font-semibold rounded-l-none rounded-2xl ${navClassName}`}
-		>
-			{NavIcon && <NavIcon className={navIconClass ?? ''} />} {label}
-		</NavLink>
-	);
+		<dl className="w-full" title={title ?? label ?? ''}>
+			<dt className="sr-only">{description ?? label ?? `Click to go to ${path}`}</dt>
+			<dd>
+				<NavLink
+					to={path} id={"side-nav-menu-" + label}
+					activeClassName={`bg-white text-flame-pea active-route ${activeClassName ?? ''}`}
+					className={`relative flex items-center w-full px-10 py-2 font-semibold rounded-l-none rounded-2xl ${navClassName}`}>
+					{NavIcon && <NavIcon className={navIconClass ?? ''} />} {label}
+				</NavLink>
+			</dd>
+		</dl >);
 }
