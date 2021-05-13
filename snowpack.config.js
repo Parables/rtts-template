@@ -7,7 +7,15 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-postcss',
-    'snowpack-plugin-svgr',
+    ['snowpack-plugin-svgr', {
+      svgrOptions:{
+        icons: true,
+        memo: true,
+        svgProps: { 
+          fill: 'currentColor'
+        }
+      }
+    }],
     [
       '@snowpack/plugin-typescript',
       {

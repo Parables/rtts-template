@@ -1,40 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useToggle, useAuth } from './utils/custom_hooks';
+import { AppContext } from './utils/global_states/AppContext';
+import type { IAppContext } from './utils/global_states/AppContext';
+import * as Pages from './pages';
 import './tailwind.css';
-import LogoIcon from './logo.svg'
-interface AppProps {}
+import { AppRouter, AppRoutes, AuthRoute } from './router';
+import type { AuthRoutes } from './router';
 
-function App({}: AppProps) {
-  // Create the count state.
-  const [count, setCount] = useState(0);
-  // Create the counter (+1 every second).
-  useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1000);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  // Return the App component.
+function App() {
+  const useAuthState = useAuth();
+  const intialAppContext: IAppContext = {
+    useSideNavToggle: useToggle(),
+    useAuth: useAuthState,
+    // more to come, like theme, auth, etc
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <LogoIcon  className="App-logo"/>
-        <p className="text-yellow-500">
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p className="text-blue-500">
-          Page has been open for <code>{count}</code> seconds.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <>
+      <AppContext.Provider value={intialAppContext}>
+        <AppRouter routes={AppRoutes} rootComponent={Pages.HomePage} />
+      </AppContext.Provider>
+    </>
   );
 }
 
