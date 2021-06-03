@@ -1,5 +1,5 @@
 {
-  "name": "rtts-template",
+  "name": "reactdynaformbuilder-v100",
   "version": "0.0.1",
   "license": "MIT",
   "main": "index.js",
@@ -7,11 +7,7 @@
     "type": "git",
     "directory": "git@github.com:Parables/rtts.git"
   },
-  "keywords": [
-    "taxi-check",
-    "portal",
-    "txc-map"
-  ],
+  "keywords": [],
   "author": {
     "name": "Parables Boltnoel",
     "email": "parables95@gmail.com",
@@ -60,5 +56,6 @@
     "snowpack-plugin-svgr": "^0.1.2",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.2.4"
-  }
+  },
+  "description": ""
 }
